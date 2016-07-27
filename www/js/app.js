@@ -24,11 +24,13 @@ define(['angular'],function(){
       });
     })
 
-    .config(function($stateProvider, $urlRouterProvider,$controllerProvider,$provide,$filterProvider,$compileProvider) {
+    .config(function($ionicConfigProvider,$stateProvider, $urlRouterProvider,$controllerProvider,$provide,$filterProvider,$compileProvider) {
       app.services = {factory:$provide.factory,service:$provide.service};//注册服务
       app.filters = {filter:$filterProvider.register};//注册锅过滤器
       app.constants = {constant:$provide.constant};//注册全局变量
       app.directives = {directive:$compileProvider.directive};//注册指令
+      $ionicConfigProvider.tabs.position('bottom');
+      $ionicConfigProvider.tabs.style('standard');
       function loadCtrl (url,name) {
         return {
           deps:['$q',function ($q) {
